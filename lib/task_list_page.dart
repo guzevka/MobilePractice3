@@ -3,11 +3,13 @@ import 'task.dart';
 import 'task_detail_page.dart';
 import 'new_task_page.dart';
 
+// TaskListPage - StatefulWidget => может изменять свое состояние во время выполнения
 class TaskListPage extends StatefulWidget {
   @override
   _TaskListPageState createState() => _TaskListPageState();
 }
 
+//Список задач, который есть изначально (объекты типа Task)
 class _TaskListPageState extends State<TaskListPage> {
   List<Task> tasks = [
     Task(title: 'Задача 1', description: 'Описание 1'),
@@ -15,12 +17,16 @@ class _TaskListPageState extends State<TaskListPage> {
     // Добавьте больше задач по аналогии
   ];
 
+// метод build - определяет, как будет выглядеть виджет страницы списка задач
+// Scaffold - для создания основной структуры страницы (с заголовком и телом)
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text('Задачи'),
       ),
+      /// ListView.builder - для отображения списка задач,
+      /// каждая задача - в виде ListTile (заголовок, описание, флажок для отметки)
       body: ListView.builder(
         itemCount: tasks.length,
         itemBuilder: (context, index) {
@@ -37,6 +43,7 @@ class _TaskListPageState extends State<TaskListPage> {
             ),
             onTap: () {
               // Навигация на страницу подробной информации о задаче
+              // при нажатии на нее происходит навигация на страницу с информацией о задаче (TaskDetailPage)
               Navigator.push(
                 context,
                 MaterialPageRoute(
@@ -47,6 +54,9 @@ class _TaskListPageState extends State<TaskListPage> {
           );
         },
       ),
+      
+      // floatingActionButton - плавающая кнопка действия, позволяет добавлять новые задачи
+      // при нажатии на нее происходит навигация на страницу для ввода новой задачи (NewTaskPage)
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           _navigateToNewTaskPage(context);
@@ -56,6 +66,7 @@ class _TaskListPageState extends State<TaskListPage> {
     );
   }
 
+// Метод для открытия страницы для ввода новой задачи
   void _navigateToNewTaskPage(BuildContext context) {
     Navigator.push(
       context,
@@ -65,6 +76,7 @@ class _TaskListPageState extends State<TaskListPage> {
     );
   }
 
+// Метод для добавления новой задачи в список
   void _addTaskToList(Task newTask) {
     setState(() {
       tasks.add(newTask);

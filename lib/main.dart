@@ -5,8 +5,11 @@ void main() {
   runApp(MyApp());
 }
 
+// MyApp - StatelessWidget => он не изменяет свое состояние во время выполнения
 class MyApp extends StatelessWidget {
   @override
+  // метод build определяет, как будет выглядеть виджет приложения.
+  // исп-ся MaterialApp для создания основной структуры приложения
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Список задач',
