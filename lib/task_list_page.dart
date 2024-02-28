@@ -12,8 +12,8 @@ class TaskListPage extends StatefulWidget {
 //Список задач, который есть изначально (объекты типа Task)
 class _TaskListPageState extends State<TaskListPage> {
   List<Task> tasks = [
-    Task(title: 'Задача 1', description: 'Описание 1'),
-    Task(title: 'Задача 2', description: 'Описание 2'),
+    Task(title: 'Позвонить маме', description: 'В 18:30'),
+    Task(title: 'Написать брату', description: 'В 23:00'),
     // Добавьте больше задач по аналогии
   ];
 
@@ -25,6 +25,7 @@ class _TaskListPageState extends State<TaskListPage> {
       appBar: AppBar(
         title: Text('Задачи'),
       ),
+
       /// ListView.builder - для отображения списка задач,
       /// каждая задача - в виде ListTile (заголовок, описание, флажок для отметки)
       body: ListView.builder(
@@ -54,7 +55,7 @@ class _TaskListPageState extends State<TaskListPage> {
           );
         },
       ),
-      
+
       // floatingActionButton - плавающая кнопка действия, позволяет добавлять новые задачи
       // при нажатии на нее происходит навигация на страницу для ввода новой задачи (NewTaskPage)
       floatingActionButton: FloatingActionButton(
